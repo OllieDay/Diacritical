@@ -81,13 +81,13 @@ module Diacritical
             |> replace vowels vowelsWithPosition
             |> replace vowelsToReplace (string vowelWithDiacritic)
 
-    let matchText text =
+    let private matchText text =
         Regex.Matches (text, pattern, RegexOptions.IgnoreCase)
             |> Seq.cast<Match>
             |> Seq.toList
             |> List.map string
 
-    let rec convertText text = function
+    let rec private convertText text = function
         | [] -> text
         | head :: tail ->
             let pinyin = convertToPinyin head
