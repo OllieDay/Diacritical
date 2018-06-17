@@ -64,19 +64,19 @@ module Diacritical
     let private replace (oldValue : string) newValue (text : string) =
         text.Replace (oldValue, newValue)
 
-    let private getVowelWithDiacritic vowel tone =
+    let private createVowelWithDiacritic vowel tone =
         let toneIndex = tone - 1
         let toneVowels = List.item toneIndex diacritics
         let vowelIndex = List.findIndex ((=) vowel) vowels
         List.item vowelIndex toneVowels
 
-    let private getPinyin (text : string) =
+    let private convertToPinyin (text : string) =
         let toneIndex = text.Length - 1
         let tone = text.Substring toneIndex |> int
         let word = text.Substring (0, toneIndex)
         let (vowels, vowelsWithPosition) = List.find (fun (vowels, _) -> word.Contains vowels) positions
         let vowelsToReplace = Regex.Match(vowelsWithPosition, ".\\*").Value
-        let vowelWithDiacritic = getVowelWithDiacritic vowelsToReplace.[0] tone
+        let vowelWithDiacritic = createVowelWithDiacritic vowelsToReplace.[0] tone
         word
             |> replace vowels vowelsWithPosition
             |> replace vowelsToReplace (string vowelWithDiacritic)
@@ -90,7 +90,7 @@ module Diacritical
     let rec convertText text = function
         | [] -> text
         | head :: tail ->
-            let pinyin = getPinyin head
+            let pinyin = convertToPinyin head
             let replacedText = text |> replace head pinyin
             convertText replacedText tail
 
