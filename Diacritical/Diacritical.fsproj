@@ -2,6 +2,14 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <Version>1.0.0</Version>
+    <Authors>Ollie Day</Authors>
+    <Title>Diacritical</Title>
+    <Description>Library for converting text to pinyin with diacritics.</Description>
+    <Copyright>Copyright 2018 (c) Ollie Day</Copyright>
+    <PackageTags>F#;Chinese;Pinyin</PackageTags>
+    <PackageLicenseUrl>https://github.com/OllieDay/Diacritical/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/OllieDay/Diacritical</PackageProjectUrl>
   </PropertyGroup>
 
   <ItemGroup>
