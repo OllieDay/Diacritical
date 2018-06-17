@@ -38,3 +38,5 @@ Works with uppercase characters too.
 Diacritical.convert "WO3 HEN3 XI3HUAN DIACRITICAL!"
 // "WǑ HĚN XǏHUAN DIACRITICAL!"
 ```
+
+Based on [quizlet/pinyin-converter](https://github.com/quizlet/pinyin-converter).
